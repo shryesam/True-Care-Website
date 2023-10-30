@@ -43,8 +43,8 @@ with st.container():
 		st.subheader("Derma Co Sunscreen")
 		st.write(
 			"""
-			TATSAT-100% Natural Ayurvedic kajal Pencil with Herbs to nourish eyes,Medicated Soot,
-			Desi Cow Ghee & Almond oil , No Preservatives ,  No chemicals , No irritation 
+			The Derma Co 1% Hyaluronic Sunscreen Aqua Ultra Light Gel with
+			 SPF 50 PA++++ For Broad Spectrum, UV A, UV B & Blue Light Protection
 			"""
 		)
 
