@@ -11,7 +11,7 @@ img_cocoa_lip = Image.open("img/cocoa_lip.png")
 img_khadi_lip = Image.open("img/khadi_lip.png")
 img_nivea_lip = Image.open("img/nivea_lip.png")
 
-#----Lipbalm----
+#----LIPBALM----
 with st.container():
 	st.header("Lipbalm")
 	st.write("##")

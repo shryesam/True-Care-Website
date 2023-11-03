@@ -7,12 +7,14 @@ from streamlit_lottie import st_lottie
 #----LOAD ASSETS-----
 img_Biotique_facewash = Image.open("img/Biotique_facewash.png")
 img_Dot_Key_facewash = Image.open("img/Dot_Key_facewash.png")
+img_derma_facewash=Image.open("img/derma_facewash.png")
+img_mama_facewash=Image.open("img/mama_facewash.png")
 
 
 
-#---KAJAL---
+#---FACE WASH---
 with st.container():
-	st.header("Facewash")
+	st.header("Face wash")
 	st.write("##")
 	image_column,text_column=st.columns((1,2))
 
@@ -50,4 +52,39 @@ with st.container():
 		)
 
 		st.markdown("[Buy here>](https://amzn.eu/d/8URpkYR)")
+
+with st.container():
+	image_column,text_column=st.columns((1,2))
+
+	with image_column:
+		st.image(img_derma_facewash)
+
+
+	with text_column:
+		st.subheader("Derma Co Facewash")
+		st.write(
+			"""
+			The Derma Co 1% Salicylic Acid Gel Face Wash With Salicylic Acid & Witch Hazel For Active Acne 
+			"""
+		)
+
+		st.markdown("[Buy here>](https://amzn.eu/d/6xo7zIN)")
+
+with st.container():
+	image_column,text_column=st.columns((1,2))
+
+	with image_column:
+		st.image(img_mama_facewash)
+
+
+	with text_column:
+		st.subheader("Mamaearth Facewash")
+		st.write(
+			"""
+			Mamaearth Ubtan Natural Face Wash For all Skin Type with Turmeric & Saffron for Tan Removal 
+			"""
+		)
+
+		st.markdown("[Buy here>](https://amzn.eu/d/9cGDE3x)")
+
 
