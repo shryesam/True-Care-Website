@@ -2,6 +2,8 @@ from PIL import Image
 import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
+import plotly.express as px
+import pandas as pd
 
 
 #----LOAD ASSETS-----
@@ -85,22 +87,45 @@ with st.container():
 
 		    st.markdown("[Buy here>](https://amzn.eu/d/b4oXojQ)")
 
-	with st.container():
-		image_column,text_column=st.columns((1,2))
 
-		with image_column:
-			st.image(img_khadi_lip)
+#--GRAPH
+with st.container():
+    st.header('Graph')
 
-		with text_column:
-			st.subheader("Khadi Pureus Herbal Lip Balm")
-			st.write(
-				"""
-				Khadi Pureus Herbals Madhuadhar Beetroot Tinted Lip Balm for dark lips to lighten, 
-			    Pigmented, Dry, Chapped & Healthy Lips with Vitamin E & Shea Butter ,
-			    Natural Lip Tint for Red Glossy , Soft-Smooth & Moisturised Lips , Women & Men
-			    """
-				)
-			st.markdown("[Buy Here>](https://amzn.eu/d/2oPEE6Q)")
+    ##---LOAD DATAFRAME
+    excel_file = 'Excel/lip_balm.xlsx'
+    sheet_name = 'Sheet1'
+
+    df = pd.read_excel(excel_file,
+                       sheet_name=sheet_name,
+                       usecols='A:C',
+                       header=0)
+
+    groupby = st.selectbox(
+        'What would you like to analyze?',
+        ('Rating', 'Cost'),
+    )
+
+    #--PLOT BAR GRAPH
+    if groupby == 'Rating':
+        fig1 = px.bar(df,
+                     x='Product',
+                     y='Rating',
+                     color='Product',
+                     template='plotly_white'
+                    )             
+        st.plotly_chart(fig1)
+
+    if groupby == 'Cost':
+        fig2 = px.bar(df,
+                     x='Product',
+                     y='Cost',
+                     color='Product',
+                     template='plotly_white'
+                    )
+        st.plotly_chart(fig2)
+
+	
 
 
 

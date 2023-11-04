@@ -2,6 +2,8 @@ from PIL import Image
 import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
+import plotly.express as px
+import pandas as pd
 
 
 #----LOAD ASSETS-----
@@ -91,3 +93,39 @@ with st.container():
 		st.markdown("[Buy here>](https://amzn.eu/d/0tKypvu)")
 
 
+#--GRAPH
+with st.container():
+    st.header('Graph')
+
+    ##---LOAD DATAFRAME
+    excel_file = 'Excel/Sunscreen.xlsx'
+    sheet_name = 'Sheet1'
+
+    df = pd.read_excel(excel_file,
+                       sheet_name=sheet_name,
+                       usecols='A:C',
+                       header=0)
+
+    groupby = st.selectbox(
+        'What would you like to analyze?',
+        ('Rating', 'Cost'),
+    )
+
+    #--PLOT BAR GRAPH
+    if groupby == 'Rating':
+        fig1 = px.bar(df,
+                     x='Product',
+                     y='Rating',
+                     color='Product',
+                     template='plotly_white'
+                    )             
+        st.plotly_chart(fig1)
+
+    if groupby == 'Cost':
+        fig2 = px.bar(df,
+                     x='Product',
+                     y='Cost',
+                     color='Product',
+                     template='plotly_white'
+                    )
+        st.plotly_chart(fig2)
